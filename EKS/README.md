@@ -20,6 +20,30 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
    In the case of a managed node group, the upgrade is performed in a canary way.
    `eksctl upgrade nodegroup --cluster=<your-cluster-name> --name=<nodegroup-name>`
 
+#### Ingress controller ([docs](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html)):
+1. Get the IAM role:
+   `curl -O https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.5.4/docs/install/iam_policy.json`
+3. Create IAM policy:
+   `aws iam create-policy \
+    --policy-name AWSLoadBalancerControllerIAMPolicy \
+    --policy-document file://iam_policy.json`
+4. Create IAM role:
+   `eksctl create iamserviceaccount \
+  --cluster=my-cluster \
+  --namespace=kube-system \
+  --name=aws-load-balancer-controller \
+  --role-name AmazonEKSLoadBalancerControllerRole \
+  --attach-policy-arn=arn:aws:iam::111122223333:policy/AWSLoadBalancerControllerIAMPolicy \
+  --approve`
+5. Install using helm:
+   `helm repo add eks https://aws.github.io/eks-charts`
+   `helm repo update eks`
+   `helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+     -n kube-system \
+     --set clusterName=my-cluster \
+     --set serviceAccount.create=false \
+     --set serviceAccount.name=aws-load-balancer-controller`
+
 **Notes:**
 - The control plane is completely hidden.
 - AWS uses service accounts to connect between IAM and the cluster itself.
