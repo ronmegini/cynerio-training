@@ -39,3 +39,7 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 - AWS uses CSI and StorageClasses to provide PVCs. It supports both block and file storage via EBS and EFS accordingly. (require CSI driver installation and a dedicated IAM role).
 - Kubernetes Ingress and service type LoadBalancer objects are implemented by ELB while ingress uses layer 7 and LoadBalancer uses layer 4 LB. (require controller installation and a dedicated IAM role).
 
+### [Running Containers on Amazon EKS & Labs](https://explore.skillbuilder.aws/learn/course/15132/running-containers-on-amazon-eks-hebrew)  
+
+**Notes:**
+- Similar to `oc get co` kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
