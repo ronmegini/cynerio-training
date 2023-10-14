@@ -9,15 +9,15 @@ eksctl uses CloudFormation to create the entire eks stack which includes: EKS, I
 It also helps to handle day 2 tasks such as configuration changes or cluster upgrades.  
 1. Create the cluster (using the YAML file in this path):  
 `eksctl create cluster -f clusterconfig.yaml`
-2. Get the cluster's `kubeconfig` file:
+2. Get the cluster's `kubeconfig` file:  
    `aws eks update-kubeconfig --name eks-training`
 
 #### Cluster upgrade:
 1. Control plane upgrade:
-   Performed completely by AWS by creating a duplicate upgraded version control plane and migrating to it (green-blue).
+   Performed completely by AWS by creating a duplicate upgraded version control plane and migrating to it (green-blue).  
    `eksctl upgrade cluster --name=<your-cluster-name> --version=<new-k8s-version> --approve`
 2. Node Group upgrade:
-   In the case of a managed node group, the upgrade is performed in a canary way.
+   In the case of a managed node group, the upgrade is performed in a canary way.  
    `eksctl upgrade nodegroup --cluster=<your-cluster-name> --name=<nodegroup-name>`
 
 #### Ingress controller ([docs](https://docs.aws.amazon.com/eks/latest/userguide/aws-load-balancer-controller.html)):
@@ -28,9 +28,9 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 4. Create IAM role:  
    `eksctl create iamserviceaccount --cluster=my-cluster --namespace=kube-system --name=aws-load-balancer-controller --role-name AmazonEKSLoadBalancerControllerRole --attach-policy-arn=arn:aws:iam::111122223333:policy/AWSLoadBalancerControllerIAMPolicy --approve`
 5. Install using helm:  
-   `helm repo add eks https://aws.github.io/eks-charts`
-   `helm repo update eks`
-   `helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=my-cluster --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller`
+   `helm repo add eks https://aws.github.io/eks-charts`  
+   `helm repo update eks`  
+   `helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=my-cluster --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller`  
 
 **Notes:**
 - The control plane is completely hidden.
