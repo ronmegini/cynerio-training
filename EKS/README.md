@@ -48,7 +48,7 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 - LoadBalacer controller is ready out of the box with eks cluster, ingress controller needed to be installed separately.
 
 #### [Monitoring](https://explore.skillbuilder.aws/learn/course/15132/play/72947/collecting-metrics)
-- Many tools allow monitoring, logging, and observability for ELK such as Prometheus Stuck (managed by AWS and open-source), ELK, Splunk, CloudWatch
+- Many tools allow monitoring, logging, and observability for EKS. such as Prometheus Stuck (managed by AWS and open-source), ELK, Splunk, CloudWatch
 - Whatever tool is chosen, a collector is required.
 - CloudWatch support both Metrics and logs ([installation guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-EKS.html))
 
