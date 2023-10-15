@@ -102,7 +102,33 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
            name: cpu
            targetAverageUtilization: 50
    ```
-
+##### Vertical Pod Autoscaler
+- Installation with a helm chart or manual installation.
+- A metrics server is needed.
+- Scale up/down the resources of each managed deployment based on the resource utilization out of the configured limits.
+- Allow custom settings. Example:
+```
+   apiVersion: autoscaling.k8s.io/v1
+   kind: VerticalPodAutoscaler
+   metadata:
+     name: my-app-vpa
+   spec:
+     targetRef:
+       apiVersion: "apps/v1"
+       kind:       "Deployment"
+       name:       "my-app-deployment"
+     updatePolicy:
+       updateMode: "On"
+     resourcePolicy:
+       containerPolicies:
+         - containerName: "my-app-container"
+           minAllowed:
+             memory: "64Mi"
+             cpu: "100m"
+           maxAllowed:
+             memory: "512Mi"
+             cpu: "1000m"
+```
 
 **Notes:**
 - Similar to `oc get co` kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
