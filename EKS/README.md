@@ -131,6 +131,6 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 ```
 
 **Notes:**
-- Similar to `oc get co` kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
+- Similar to `oc get co`, kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
 - The connection betweeen IAM identity to kubernetes RBAC configured by ConfigMap named aws-auth which map between aws role to rbac group.
 - Flux is another kind of gitOps tool, similar to ArgoCD
