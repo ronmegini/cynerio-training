@@ -52,6 +52,58 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 - Whatever tool is chosen, a collector is required.
 - CloudWatch support both Metrics and logs ([installation guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-EKS.html))
 
+#### Auto Scaler
+- There several types of auto scalers: node level (cluster auto scaler), replicas level (HPA), resources level (VPA)
+##### [Cluster Auto Scaler](https://artifacthub.io/packages/helm/cluster-autoscaler/cluster-autoscaler)
+- Installation with an add-on, helm chart, or manual installation.
+- Scale up and down node groups
+- Add nodes when needed, remove nodes when unneeded, and reschedule pods for better node utilization
+- Allow custom settings. Example:
+  ```
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: cluster-autoscaler
+    namespace: kube-system
+  data:
+    config.json: |
+      {
+        "auto-discovery": {
+          "asg-tag": "k8s.io/cluster-autoscaler/enabled",
+          "enable-default-aws-asg-tags": false
+        },
+        "balance-similar-node-groups": true,
+        "skip-nodes-with-system-pods": false,
+        "skip-nodes-with-local-storage": false,
+        "expander": "least-waste",
+        "scaling-policy": "Auto"
+      }
+```
+##### Horizontal Pod Autoscaler
+- Installation with a helm chart or manual installation.
+- A metrics server is needed.
+- Scale up/down the replicas of each managed deployment based on the resource utilization out of the configured limits.
+- Allow custom settings. Example:
+```
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-app-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-app-deployment
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 50
+```
+
+
 **Notes:**
 - Similar to `oc get co` kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
 - The connection betweeen IAM identity to kubernetes RBAC configured by ConfigMap named aws-auth which map between aws role to rbac group.
