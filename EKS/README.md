@@ -49,7 +49,7 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 
 #### [Monitoring](https://explore.skillbuilder.aws/learn/course/15132/play/72947/collecting-metrics)
 - Many tools allow monitoring, logging, and observability for EKS. such as Prometheus Monitoring Stack (managed by AWS and open-source), ELK, Splunk, CloudWatch
-- Whatever tool is chosen, a collector is required.
+- Whatever tool is chosen, a collector is required. (such as fluentd, node exporter, etc.)
 - CloudWatch support both Metrics and logs ([installation guide](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/deploy-container-insights-EKS.html))
 
 #### Auto Scaler
