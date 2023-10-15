@@ -78,30 +78,30 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
         "expander": "least-waste",
         "scaling-policy": "Auto"
       }
-```
+   ```
 ##### Horizontal Pod Autoscaler
 - Installation with a helm chart or manual installation.
 - A metrics server is needed.
 - Scale up/down the replicas of each managed deployment based on the resource utilization out of the configured limits.
 - Allow custom settings. Example:
-```
-apiVersion: autoscaling/v2beta2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: my-app-hpa
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: my-app-deployment
-  minReplicas: 2
-  maxReplicas: 10
-  metrics:
-    - type: Resource
-      resource:
-        name: cpu
-        targetAverageUtilization: 50
-```
+   ```
+   apiVersion: autoscaling/v2beta2
+   kind: HorizontalPodAutoscaler
+   metadata:
+     name: my-app-hpa
+   spec:
+     scaleTargetRef:
+       apiVersion: apps/v1
+       kind: Deployment
+       name: my-app-deployment
+     minReplicas: 2
+     maxReplicas: 10
+     metrics:
+       - type: Resource
+         resource:
+           name: cpu
+           targetAverageUtilization: 50
+   ```
 
 
 **Notes:**
