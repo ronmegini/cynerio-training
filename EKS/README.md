@@ -41,6 +41,13 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 
 ### [Running Containers on Amazon EKS & Labs](https://explore.skillbuilder.aws/learn/course/15132/running-containers-on-amazon-eks-hebrew)  
 
+#### Ingress vs Service type LoadBalancer
+- Both of them are used for exposing kubernetes workload externally.
+- The LoadBalancer is handled by a controller that creates an `AWS Elastic Load Balancer` which handles TCP level communication.
+- The Ingress is handled by a controller that creates `AWS Application Load Balancers` which handle HTTP/HTTPS level communication with advanced 7-layer features.
+- LoadBalacer controller is ready out of the box with eks cluster, ingress controller needed to be installed separately.
+
 **Notes:**
 - Similar to `oc get co` kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
 - The connection betweeen IAM identity to kubernetes RBAC configured by ConfigMap named aws-auth which map between aws role to rbac group.
+- Flux is another kind of gitOps tool, similar to ArgoCD
