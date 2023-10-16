@@ -130,6 +130,12 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
              cpu: "1000m"
 ```
 
+#### Networking
+- The EKS live inside of a VPC, which means that that pods IPs are VPC addresses.
+- The egress traffic made via a NAT (in case of a private subnet)
+- The ingress traffic made via a LoadBalancer or Ingress.
+- 
+
 **Notes:**
 - Similar to `oc get co`, kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
 - The connection betweeen IAM identity to kubernetes RBAC configured by ConfigMap named aws-auth which map between aws role to rbac group.
