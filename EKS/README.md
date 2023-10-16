@@ -165,6 +165,8 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
   - To grant pods permissions to access AWS services, we need to map Kubernetes ServiceAccount to AWS role.
   - To map between SA and AWS role we need to configure OIDC provider. Example:  
     `eksctl utils associate-iam-oids-provider --cluster <name> --approve --region <region>`
+  - Create SA with a coresponding IAM role (allow s3 read access):  
+    `eksctl create iamserviceaccount --name aws-s3-read --namespace default --cluster prod --attach-policy-arn arn:aws:iam:: aws:policy/AmazonS3ReadonlyAccess --approve --region us-west-2`
 
 **Notes:**
 - Similar to `oc get co`, kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
