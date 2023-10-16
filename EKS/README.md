@@ -142,7 +142,6 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 #### Authorization & Authentication
 - Authentication implemented with AWS IAM, Authorization implemented with EKS RBAC.
 - IAM Group=RBAC Group; IAM User=RBAC User; IAM Role=RBAC Role Binding; IAM Policy=RBAC Role
-- We need to configure IAM manually to serve as the cluster OIDC provider.
 - To map between IAM users and roles to RBAC permissions aws-auth config map is used. Example:
   ```
   apiVersion: v1
@@ -163,7 +162,6 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
         groups:
           - <k8s-group>
   ```
-
 
 **Notes:**
 - Similar to `oc get co`, kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
