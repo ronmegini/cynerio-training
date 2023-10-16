@@ -137,7 +137,33 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 - Route table shell be configured for egress network via the Internet Gateway.
 - Network rules should be configured - By security group for the VMs, and by NACL for the entire subnet.
 - DNS service with AWS Route 53. The records inside the VPC are configured with a private hosted zone, while the public records are configured in the public record zone.
-- Multiple subnets can be attached to EKS (for example in case addresses are over) 
+- Multiple subnets can be attached to EKS (for example in case addresses are over)
+
+#### Authorization & Authentication
+- Authentication implemented with AWS IAM, Authorization implemented with EKS RBAC.
+- IAM Group=RBAC Group; IAM User=RBAC User; IAM Role=RBAC Role Binding; IAM Policy=RBAC Role
+- We need to configure IAM manually to serve as the cluster OIDC provider.
+- To map between IAM users and roles to RBAC permissions aws-auth config map is used. Example:
+  ```
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: aws-auth
+    namespace: kube-system
+  data:
+    mapRoles: |
+      - rolearn: <ARN of NodeInstanceRole>
+        username: system:node:{{EC2PrivateDNSName}}
+        groups:
+          - system:bootstrappers
+          - system:nodes
+    mapUsers: |
+      - userarn: arn:aws:iam::<account-id>:user/<username>
+        username: <eks-username>
+        groups:
+          - <k8s-group>
+  ```
+
 
 **Notes:**
 - Similar to `oc get co`, kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
