@@ -137,6 +137,7 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 - Route table shell be configured for egress network via the Internet Gateway.
 - Network rules should be configured - By security group for the VMs, and by NACL for the entire subnet.
 - DNS service with AWS Route 53. The records inside the VPC are configured with a private hosted zone, while the public records are configured in the public record zone.
+- Multiple subnets can be attached to EKS (for example in case addresses are over) 
 
 **Notes:**
 - Similar to `oc get co`, kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
