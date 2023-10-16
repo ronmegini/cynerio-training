@@ -162,8 +162,8 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
         groups:
           - <k8s-group>
   ```
-  or
-  `eksctl create iamidentitymapping --cluster <name> --arn <arn> --group <Kubernetes RBAC group to which the specified AWS IAM role or user should be mapped> --username <Kubernetes username that the role mapped to>`
+  or  
+  `eksctl create iamidentitymapping --cluster <name> --arn <arn> --group <Kubernetes RBAC group to which the specified AWS IAM role or user should be mapped> --username <Kubernetes username that the role mapped to>`  
   - To grant pods permissions to access AWS services, we need to map Kubernetes ServiceAccount to AWS role.
   - To map between SA and AWS role we need to configure OIDC provider. Example:  
     `eksctl utils associate-iam-oids-provider --cluster <name> --approve --region <region>`
