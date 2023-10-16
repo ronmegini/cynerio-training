@@ -131,10 +131,10 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 ```
 
 #### Networking
-- The EKS live inside of a VPC, which means that that pods IPs are VPC addresses.
-- The egress traffic made via a NAT (in case of a private subnet)
+- The EKS lives inside of a VPC, which means that the pods' IPs are VPC addresses.
+- The egress traffic made via a NAT and Internet Gateway (in case of a private subnet)
 - The ingress traffic made via a LoadBalancer or Ingress.
-- 
+- Route table shell be configured for egress network via the Internet Gateway.
 
 **Notes:**
 - Similar to `oc get co`, kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
