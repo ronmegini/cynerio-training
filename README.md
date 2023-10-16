@@ -2,4 +2,4 @@
 
 ### Table of Contents
 
-- [EKS]()
+- [EKS](https://github.com/ronmegini/cynerio-training/tree/main/EKS)
