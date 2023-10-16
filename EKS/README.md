@@ -162,6 +162,9 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
         groups:
           - <k8s-group>
   ```
+  - To grant pods permissions to access AWS services, we need to map Kubernetes ServiceAccount to AWS role.
+  - To map between SA and AWS role we need to configure OIDC provider. Example:  
+    `eksctl utils associate-iam-oids-provider --cluster <name> --approve --region <region>`
 
 **Notes:**
 - Similar to `oc get co`, kubernetes expose `kubectl get cs` to tget the control plane compenents statuses.
