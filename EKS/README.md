@@ -83,7 +83,7 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 ##### Karpenter
 - Karpenter in an open-source project that was initialized by aws but is now supported in all the major cloud providers.
 - This auto-scaler scans the schedule pods' needs and creates nodes accordingly
-- It creates nodes of many types in different zones according to the pod's requirements and the restrictions applied to it.
+- It creates nodes of many types, sizes and zones according to the pod's requirements and the restrictions applied to it.
 - The tool creates the nodes directly without the usage of node groups.
 
 ##### Horizontal Pod Autoscaler
