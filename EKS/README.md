@@ -85,6 +85,7 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 - This auto-scaler scans the scheduled pods' needs and creates nodes accordingly
 - It creates nodes of many types, sizes, and zones according to the pod's requirements and the restrictions applied to it.
 - The tool creates the nodes directly without the usage of node groups.
+- Install Karpenter by following this [guide](https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/)
 - Update the nodes by changing the node template in the Provider object.
 
 ##### Horizontal Pod Autoscaler
