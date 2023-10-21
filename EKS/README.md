@@ -88,6 +88,7 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 - Install Karpenter by following this [guide](https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/).
 - [Update the nodes](https://karpenter.sh/docs/upgrade-guide/) by changing the api in the AWSNodeTemplate used by the Provider.
 - Karpenter uses PodDistruptionBudget to validate that one pod is up and ready all the time.
+- Karpenter pods cannot run on nodes created by karpenter.
 
 ##### Horizontal Pod Autoscaler
 - Installation with a helm chart or manual installation.
