@@ -24,3 +24,4 @@ spec:
     karpenter.sh/discovery: ronmegini-karpenter-demo
   securityGroupSelector:
     karpenter.sh/discovery: ronmegini-karpenter-demo
+    aws:cloudformation:logical-id: ClusterSharedNodeSecurityGroup
