@@ -86,8 +86,8 @@ It also helps to handle day 2 tasks such as configuration changes or cluster upg
 - It creates nodes of many types, sizes, and zones according to the pod's requirements and the restrictions applied to it.
 - The tool creates the nodes directly without the usage of node groups.
 - Install Karpenter by following this [guide](https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/).
-- Update the nodes by changing the node template in the Provider object.
-- Karpenter uses PodDistruptionBudget to validate that one pod is up and ready all the time
+- [Update the nodes](https://karpenter.sh/docs/upgrade-guide/) by changing the node template in the Provider object.
+- Karpenter uses PodDistruptionBudget to validate that one pod is up and ready all the time.
 
 ##### Horizontal Pod Autoscaler
 - Installation with a helm chart or manual installation.
