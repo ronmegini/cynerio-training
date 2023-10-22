@@ -13,6 +13,7 @@
 - The Terraform's file extension is `.tf`.
 - To apply the changes use `terraform init`, observe the changes, then approve.
 - While the terraform init, terraform will download the mentioned providers from the terraform registry.
+- Terraform init creates a hidden `.terraform` directory that contains the providers.
 
 ### Syntax
 
