@@ -17,14 +17,16 @@
 ### Syntax
 
 #### Terraform Block
-- Contain the settings of terraform including the required providers.
+- Contains the settings of terraform including the required providers.
 - Example:
   ```
   terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.16"
+    required_providers {
+      aws = {
+        source  = "hashicorp/aws"
+        version = "~> 4.16"
+      }
     }
+    required_version = ">= 1.2.0"
   }
   ```
