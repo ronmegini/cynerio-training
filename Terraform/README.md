@@ -18,6 +18,8 @@
 
 #### Terraform Block
 - Contains the settings of terraform including the required providers.
+- For each provider, the source attribute defines an optional hostname, a namespace, and the provider type.
+- Terraform installs providers from the Terraform Registry by default.
 - Example:
   ```
   terraform {
@@ -28,5 +30,15 @@
       }
     }
     required_version = ">= 1.2.0"
+  }
+  ```
+
+#### Provider Block
+- The provider block configures the specified provider.
+- Multiple providers together in the same tf file are supported.
+- Example:
+  ```
+  provider "aws" {
+    region  = "us-west-2"
   }
   ```
