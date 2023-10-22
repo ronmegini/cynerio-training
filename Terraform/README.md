@@ -11,10 +11,13 @@
 - [Terraform installation](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 - AWS CLI and credentials are required.
 - The Terraform's file extension is `.tf`.
-- `terraform init` used to initialize the terraform project including install the providers, and create the state files inside a hidden `.terraform` directory.
+- `terraform init` is used to initialize the terraform project including installing the providers, which are stored inside a hidden `.terraform` directory.
 - `terraform fmt` reformat the files to compile with terraform standards.
-- `terraform validate` is a linter tool that validate the code.
-- `terraform apply` used to apply the changes. First it will print the changes, then you will be asked to approve, and afterthat the resources will applied.
+- `Terraform validates` is a linter tool that validates the code.
+- `terraform apply` used to apply the changes. First, it will print the changes, then you will be asked to approve, and after that, the resources will applied.
+- After the resources are applied, Terraform creates a `terraform.tfstate` file which stores the state of the objects. This is the ONLY way terraform can know the status of the objects. For that reason, it is forbidden to modify the objects without terraform.
+- `terraform show` shows the object state from the state file.
+- `terraform destroy` will delete all the objects created by it.
 
 ### Syntax
 
