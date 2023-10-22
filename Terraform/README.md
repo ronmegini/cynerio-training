@@ -42,3 +42,20 @@
     region  = "us-west-2"
   }
   ```
+
+#### Resource Block
+- Resource block used to define components of the infrastructure.
+- A resource might be a physical or virtual component (such as an EC2 instance, or it can be a logical resource such as an application).
+- Resource blocks have two strings before the block: the resource type and the resource name.
+- The resource type and name are used as a reference for the object. For example, `aws_instance.app_server` will get the VM's ID.
+- Resource blocks contain arguments that you use to configure the resource. The arguments are documented in each provider's documentation.
+- Example:
+  ```
+  resource "aws_instance" "app_server" {
+    ami           = "ami-830c94e3"
+    instance_type = "t2.micro"
+    tags = {
+      Name = "ExampleAppServerInstance"
+    }
+  }
+  ```
