@@ -64,3 +64,24 @@
     }
   }
   ```
+
+#### Varibles
+- Usually defined in the `variables.tf` file
+- Static/default values defined inside of a `variable "<name>"` {} block. Example:
+  ```
+  variable "instance_name" {
+    description = "Value of the Name tag for the EC2 instance"
+    type        = string
+    default     = "ExampleAppServerInstance"
+  }
+  ```
+- Variables access is possible via var.<var_name>. Example:
+  ```
+  tags = {
+    Name = var.instance_name
+  }
+  ```
+- Variables also can be set by `-var` flag in the apply command. Example:
+  ```
+  -var "instance_name=YetAnotherName"
+  ```
