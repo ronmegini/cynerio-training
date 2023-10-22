@@ -11,9 +11,10 @@
 - [Terraform installation](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
 - AWS CLI and credentials are required.
 - The Terraform's file extension is `.tf`.
-- To apply the changes use `terraform init`, observe the changes, then approve.
-- While the terraform init, terraform will download the mentioned providers from the terraform registry.
-- Terraform init creates a hidden `.terraform` directory that contains the providers.
+- `terraform init` used to initialize the terraform project including install the providers, and create the state files inside a hidden `.terraform` directory.
+- `terraform fmt` reformat the files to compile with terraform standards.
+- `terraform validate` is a linter tool that validate the code.
+- `terraform apply` used to apply the changes. First it will print the changes, then you will be asked to approve, and afterthat the resources will applied.
 
 ### Syntax
 
