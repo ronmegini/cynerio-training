@@ -85,3 +85,11 @@
   ```
   -var "instance_name=YetAnotherName"
   ```
+- Output values to present useful information to the Terraform user during the apply process or by the `terraform output` command. It is defined in the `outputs.tf` file, for example:
+  ```
+  output "instance_id" {
+    description = "ID of the EC2 instance"
+    value       = aws_instance.app_server.id
+  }
+  ```
+
