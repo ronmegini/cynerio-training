@@ -112,3 +112,14 @@
   data "aws_availability_zones" "available" {}
   ```
   The variables can be retrieved by: `data.aws_availability_zones.available.names`
+
+## Terraspace
+- Framework that aims to simplify the use of Terraform
+- Terraspace allows users to create modular Terraform configurations, making it easy to reuse code and reduce repetition.
+- Stacks are used as the "main" function and should include only one-time specific configurations.
+- Modules are code pieces following DRY and are reusable over multiple different stacks.
+- Terrafile is a feature in Terraspace where you can define and manage Terraform module sources. With a Terrafile, you can use modules from various sources such as GitHub, Terraform Registry, or local paths.
+- It offers hooks to run scripts or commands before or after the terraform command.
+- Terraspace simplifies the process of setting up and using Terraform backends like AWS S3. These backends allow for state management and locking, especially crucial when working in teams. For example, the state files stored there allow consistent track of the state.
+- Terraspace includes a system to handle stack dependencies. It can automatically order Terraform operations based on the defined dependencies between stacks.
+- 
