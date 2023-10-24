@@ -122,4 +122,5 @@
 - It offers hooks to run scripts or commands before or after the terraform command.
 - Terraspace simplifies the process of setting up and using Terraform backends like AWS S3. These backends allow for state management and locking, especially crucial when working in teams. For example, the state files stored there allow consistent track of the state.
 - Terraspace includes a system to handle stack dependencies. It can automatically order Terraform operations based on the defined dependencies between stacks.
+- Create new project: `terraspace new project <name> --plugin <cloud>`
 - To deploy all the infrastructure stacks: `terraspace all up`; To deploy individual stacks: `terraspace up <stack>`
