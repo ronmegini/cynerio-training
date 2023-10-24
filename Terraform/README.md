@@ -65,6 +65,18 @@
   }
   ```
 
+#### Module Block
+- Container for multiple resources and other configurations (potentially even other modules) that are used together.
+- Allows code reusability.
+- Example:
+  ```
+  module "vpc" {
+    source  = "terraform-aws-modules/vpc/aws"
+    name    = "my-vpc"
+    cidr    = "10.0.0.0/16"
+  }
+  ```
+
 #### Varibles
 - Usually defined in the `variables.tf` file
 - Static/default values defined inside of a `variable "<name>"` {} block. Example:
