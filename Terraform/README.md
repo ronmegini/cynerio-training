@@ -24,7 +24,7 @@
 #### Terraform Block
 - Contains the settings of terraform including the required providers.
 - For each provider, the source attribute defines an optional hostname, a namespace, and the provider type.
-- Terraform installs providers from the Terraform Registry by default.
+- Terraform installs providers from the [Terraform Registry](https://registry.terraform.io) by default.
 - Example:
   ```
   terraform {
