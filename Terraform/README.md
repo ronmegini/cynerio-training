@@ -92,4 +92,11 @@
     value       = aws_instance.app_server.id
   }
   ```
-
+#### Data Source
+- Allows data to be fetched or computed for use elsewhere in Terraform configuration.
+- The data object is imported from the provider.
+- Example:
+  ```
+  data "aws_availability_zones" "available" {}
+  ```
+  The variables can be retrieved by: `data.aws_availability_zones.available.names`
