@@ -113,7 +113,7 @@
   ```
   The variables can be retrieved by: `data.aws_availability_zones.available.names`
 
-## Terraspace
+## [Terraspace](https://youtu.be/tXzppmTfqIs?si=0QAXz9AZSbAXDXZ8)
 - Framework that aims to simplify the use of Terraform
 - Terraspace allows users to create modular Terraform configurations, making it easy to reuse code and reduce repetition.
 - Stacks are used as the "main" function and should include only one-time specific configurations.
