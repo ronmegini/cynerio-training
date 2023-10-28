@@ -57,7 +57,7 @@ locals {
   cluster_version = "1.27"
   region          = "eu-west-1"
 
-  vpc_cidr = "10.0.0.0/16"
+  vpc_cidr = "172.31.0.0/16"
   azs      = slice(data.aws_availability_zones.available.names, 0, 3)
 
   tags = {
