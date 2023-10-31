@@ -7,6 +7,28 @@
 ### Usage
 - The procedure is defined in `.gitlab-ci.yml` which resides in the root of your repository.
 - Runners: These are agents or virtual machines that execute the jobs. They pick up jobs based on tags and other configurations. Runners can be specific to one project or can be shared among several projects. The runners are either managed or on-prem servers (pods/VMs).
+- Configure GitLab runner:
+  VM:
+  ```
+  sudo yum install gitlab-runner
+  sudo gitlab-runner register
+  sudo gitlab-runner start
+  ```
+  Container:
+  ```
+  docker run -d --name gitlab-runner --restart always \
+  -v /srv/gitlab-runner/config:/etc/gitlab-runner \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  gitlab/gitlab-runner:latest
+  docker exec -it gitlab-runner gitlab-runner register
+  ```
+  Pod:
+  ```
+  helm install gitlab-runner gitlab/gitlab-runner \
+  --set gitlabUrl=YOUR_GITLAB_URL \
+  --set runnerRegistrationToken=REGISTRATION_TOKEN \
+  --namespace gitlab
+  ```
 - The jobs are running on a container created from the specified image, which allows us to provide the necessary dependencies for the operations of the job.
 
 ### Syntax
