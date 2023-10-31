@@ -105,16 +105,16 @@ Prometheus Query Language, is the powerful and flexible query language used by P
 - Functions: rate(), sum(), avg(), max(), min(), histogram_quantile(), and many others.
 
 #### Common Query Patterns:
-- Instant Vector Selector: This is a basic query for fetching data.
+- Instant Vector Selector: This is a basic query for fetching data.  
 `http_requests_total{handler="/api"}`: Returns all the time series with the metric name http_requests_total and the label handler set to /api.
-- Range Vector Selector: Fetches data over a period.
+- Range Vector Selector: Fetches data over a period.  
 `http_requests_total[5m]`: Returns the http_requests_total metric over the last 5 minutes.
-- Rate over a Range Vector: Computes the per-second rate over a period.
+- Rate over a Range Vector: Computes the per-second rate over a period.  
 `rate(http_requests_total[5m])`: Returns the per-second rate of http_requests_total over the last 5 minutes.
-- Aggregation: Aggregates data across multiple time series.
-`sum(http_requests_total)`: Sums up all the time series data for http_requests_total.
+- Aggregation: Aggregates data across multiple time series.  
+`sum(http_requests_total)`: Sums up all the time series data for http_requests_total.  
 `avg(http_requests_total) by (method)`: Averages the data, grouped by the method label.
-- Operators with Vectors: Combine different time series or scalar values.
+- Operators with Vectors: Combine different time series or scalar values.  
 `http_requests_total / http_request_duration_milliseconds`: Divides the total requests by the total duration, giving an average request duration.
-- Histogram and Quantiles: Generate quantiles from histogram data.
+- Histogram and Quantiles: Generate quantiles from histogram data.  
 `histogram_quantile(0.95, sum(rate(http_request_duration_bucket[5m])) by (le))`: Returns the 95th percentile of request durations over the past 5 minutes.
