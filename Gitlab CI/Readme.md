@@ -7,7 +7,7 @@
 ### Usage
 - The procedure is defined in `.gitlab-ci.yml` which resides in the root of your repository.
 - Runners: These are agents or virtual machines that execute the jobs. They pick up jobs based on tags and other configurations. Runners can be specific to one project or can be shared among several projects. The runners are either managed or on-prem servers (pods/VMs).
-- Configure GitLab runner:
+- Configure GitLab runner:  
   VM:
   ```
   sudo yum install gitlab-runner
