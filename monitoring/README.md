@@ -83,3 +83,38 @@ helm repo update
 # Install Grafana
 helm install grafana grafana/grafana
 ```
+
+### PromQL
+Prometheus Query Language, is the powerful and flexible query language used by Prometheus to retrieve and work with stored metric data. With PromQL, we can aggregate and analyze time series data in various ways, allowing us to gain insights, generate alerts, and create comprehensive visualizations via tools like Grafana.
+
+#### Basic Concepts:
+- Time Series: A time series in Prometheus contains a set of timestamp/value metrics for a single metric name and label set.
+- Labels: Time series are identified by metric names and sets of key-value pairs (labels). For example, http_requests_total{method="GET", handler="/api"}.
+- Samples: Each time series consists of individual data points known as samples. Each sample contains a float64 value and a millisecond-precision timestamp.
+
+#### Metric Types:
+- Counter: A cumulative metric that represents a single monotonically increasing counter. It only increases or gets reset to zero.
+- Gauge: A metric that can go up or down, representing a single numerical value that can arbitrarily increase or decrease.
+- Histogram: Samples observations (like request durations or response sizes) and counts them in configurable buckets.
+- Summary: Similar to a histogram, but also provides a set of quantiles (e.g., 50th, 90th, and 99th percentile).
+
+#### Basic Operators and Functions:
+- Arithmetic: +, -, *, /, %, ^.
+- Comparison: ==, !=, >, <, >=, <=.
+- Logical: and, or, unless.
+- Functions: rate(), sum(), avg(), max(), min(), histogram_quantile(), and many others.
+
+#### Common Query Patterns:
+- Instant Vector Selector: This is a basic query for fetching data.
+`http_requests_total{handler="/api"}`: Returns all the time series with the metric name http_requests_total and the label handler set to /api.
+- Range Vector Selector: Fetches data over a period.
+`http_requests_total[5m]`: Returns the http_requests_total metric over the last 5 minutes.
+- Rate over a Range Vector: Computes the per-second rate over a period.
+`rate(http_requests_total[5m])`: Returns the per-second rate of http_requests_total over the last 5 minutes.
+- Aggregation: Aggregates data across multiple time series.
+`sum(http_requests_total)`: Sums up all the time series data for http_requests_total.
+`avg(http_requests_total) by (method)`: Averages the data, grouped by the method label.
+- Operators with Vectors: Combine different time series or scalar values.
+`http_requests_total / http_request_duration_milliseconds`: Divides the total requests by the total duration, giving an average request duration.
+- Histogram and Quantiles: Generate quantiles from histogram data.
+`histogram_quantile(0.95, sum(rate(http_request_duration_bucket[5m])) by (le))`: Returns the 95th percentile of request durations over the past 5 minutes.
