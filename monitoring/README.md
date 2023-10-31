@@ -54,3 +54,32 @@ Thanos is an open-source, highly available metric system that has been designed 
 - Receiver: Accepts data pushed by Prometheus, useful for setups where a pull model is not feasible. Can replicate data for HA setups.
 - Frontend: Introduced for improved query performance. Splits and parallelizes larger query jobs, reducing the overall query time.
 - Tools: Thanos provides various tools for inspecting and modifying blocks in object storage, useful for maintenance and troubleshooting.
+
+### Installation
+Deploy Prometheus with Thanos Sidecar:
+```
+# Add the Prometheus community Helm chart repository
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+# Install Prometheus with Thanos sidecar configuration
+helm install prometheus prometheus-community/prometheus \
+--set thanos.create=true \
+--set thanos.objstoreConfig=<path_to_your_objstore_config.yaml>
+```
+Deploy Thanos Components:
+```
+helm install thanos-query prometheus-community/thanos \
+--set query.enabled=true \
+--set query.http.enabled=true \
+--set query.dnsDiscovery.enabled=false
+```
+Deploy Grafana:
+```
+# Add the Grafana Helm chart repository
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+
+# Install Grafana
+helm install grafana grafana/grafana
+```
