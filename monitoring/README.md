@@ -34,3 +34,23 @@ Grafana is an open-source platform for monitoring and observability, which can v
 - Grafana fetches metrics from Prometheus using PromQL.
 - The fetched metrics can be visualized in various forms like graphs, tables, and heatmaps.
 - Grafana dashboards are often shared in the community, so you don't always have to build from scratch.
+
+### Thanos
+Thanos is an open-source, highly available metric system that has been designed to work alongside Prometheus, enhancing its scalability and long-term storage capabilities. The main goal of Thanos is to allow easy access to metrics at high-availability while also enabling longer-term storage solutions beyond what vanilla Prometheus provides.
+
+#### Key Features:
+- Global Query View: Allows querying of all connected Prometheus servers, providing a unified view of metrics from different clusters or data centers.
+- Unlimited Retention: With the integration of object storage (e.g., Amazon S3, Google Cloud Storage, or any S3-compatible storage), Thanos provides long-term storage capabilities beyond the local storage of Prometheus.
+- Downsampling and Compression: Reduces the size and query time of historical data.
+- High Availability: Achieved by replication of data and deduplication of fetched metrics.
+- Scalable: Designed to scale with your needs, handling millions of time series.
+
+#### Components:
+- Sidecar: This component runs alongside a Prometheus instance. It uploads TSDB (Time Series DataBase) blocks to object storage and offers a gRPC API to access real-time metrics as well as the metrics in the remote storage.
+- Store Gateway: Provides a unified access point to metrics in the object storage, making them available for querying. It's essentially the bridge between long-term storage and the real-time querying capabilities of Thanos.
+- Compactor: This component is responsible for compressing, downsampling, and applying retention policies to data in the object storage. Helps in optimizing storage and improving query performance for older data.
+- Querier (or Query): This is the component you query against (similar to how you'd query a Prometheus server). It aggregates the data from multiple sources like Prometheus servers, Sidecars, and Store Gateways, providing a global view of all data.
+- Ruler: Provides a way to evaluate Prometheus recording and alerting rules against the global metric data, which is especially useful when you want rule evaluations to be performed on older historical data or on data from different clusters.
+- Receiver: Accepts data pushed by Prometheus, useful for setups where a pull model is not feasible. Can replicate data for HA setups.
+- Frontend: Introduced for improved query performance. Splits and parallelizes larger query jobs, reducing the overall query time.
+- Tools: Thanos provides various tools for inspecting and modifying blocks in object storage, useful for maintenance and troubleshooting.
